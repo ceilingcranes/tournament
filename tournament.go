@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"tournament/db"
 )
 
 /* Describes each individual entry into the tournament. Each one will be compared to others in the tournament. */
@@ -34,8 +35,18 @@ func createBrackets(filename string) []Bracket {
 	return []Bracket{}
 }
 
+/*
 func main() {
 	var inputData = "testdata.txt"
 	bracketList := createBrackets(inputData)
 	fmt.Println(bracketList)
+}*/
+
+func main() {
+	db := db.NewDB()
+	err := db.Ping()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Sucessfully connected")
 }
